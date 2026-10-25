@@ -5,4 +5,7 @@ function filterSkillsByCategory(skills, category) {
   return skills.filter((skill) => skill.category === category);
 }
 
-module.exports = { filterSkillsByCategory };
+// Export for Jest (Node) only; the browser has no `module`
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { filterSkillsByCategory };
+}

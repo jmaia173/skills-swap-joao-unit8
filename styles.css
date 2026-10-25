@@ -173,3 +173,36 @@ footer {
     gap: 1rem;
   }
 }
+
+/* ===== Filter Buttons ===== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #1e3a5f;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #1e3a5f;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #e3ecf7;
+}
+
+.filter-btn.active {
+  background-color: #1e3a5f;
+  color: #fff;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  color: #666;
+}

@@ -58,13 +58,13 @@ function formatPrice(price) {
   return price === 0 ? 'Free' : `$${price} / hour`;
 }
 
-function renderSkills(list) {
+function renderSkills(list, container, emptyText) {
   if (list.length === 0) {
-    cardContainer.innerHTML = '<p class="empty-message">No skills found in this category.</p>';
+    container.innerHTML = `<p class="empty-message">${emptyText}</p>`;
     return;
   }
 
-  cardContainer.innerHTML = list
+  container.innerHTML = list
     .map(
       (skill) => `
         <article class="skill-card">
@@ -80,7 +80,17 @@ function renderSkills(list) {
     .join('');
 }
 
-// Filter buttons: call filterSkillsByCategory and re-render
+// Toggle expand/collapse on a skill card (event delegation so it works after re-render)
+function enableCardToggle(container) {
+  container.addEventListener('click', (event) => {
+    const card = event.target.closest('.skill-card');
+    if (card) {
+      card.classList.toggle('expanded');
+    }
+  });
+}
+
+// ===== Filter buttons =====
 filterBar.addEventListener('click', (event) => {
   const button = event.target.closest('.filter-btn');
   if (!button) return;
@@ -88,15 +98,38 @@ filterBar.addEventListener('click', (event) => {
   filterBar.querySelectorAll('.filter-btn').forEach((btn) => btn.classList.remove('active'));
   button.classList.add('active');
 
-  renderSkills(filterSkillsByCategory(skills, button.dataset.category));
+  renderSkills(
+    filterSkillsByCategory(skills, button.dataset.category),
+    cardContainer,
+    'No skills found in this category.'
+  );
 });
 
-// Toggle expand/collapse on a skill card (event delegation so it works after re-render)
-cardContainer.addEventListener('click', (event) => {
-  const card = event.target.closest('.skill-card');
-  if (card) {
-    card.classList.toggle('expanded');
+// ===== Find My Match =====
+const matchCategory = document.getElementById('match-category');
+const matchMaxPrice = document.getElementById('match-max-price');
+const matchBtn = document.getElementById('match-btn');
+const matchMessage = document.getElementById('match-message');
+const matchResults = document.getElementById('match-results');
+
+matchBtn.addEventListener('click', () => {
+  const maxPrice = parseFloat(matchMaxPrice.value);
+
+  if (Number.isNaN(maxPrice) || maxPrice < 0) {
+    matchMessage.textContent = 'Please enter a max price of 0 or more.';
+    matchMessage.classList.add('error');
+    matchResults.innerHTML = '';
+    return;
   }
+
+  const userNeeds = { category: matchCategory.value, maxPrice };
+  const matches = matchSkillsToUser(userNeeds, skills);
+
+  matchMessage.classList.remove('error');
+  matchMessage.textContent =
+    matches.length === 1 ? '1 match found' : `${matches.length} matches found`;
+
+  renderSkills(matches, matchResults, 'No skills match your needs. Try a higher budget or another category.');
 });
 
 // ===== Cost calculator =====
@@ -120,5 +153,7 @@ calcBtn.addEventListener('click', () => {
   calcResult.textContent = total === 0 ? 'Total cost: Free' : `Total cost: $${total.toFixed(2)}`;
 });
 
-// Initial render
-renderSkills(skills);
+// ===== Init =====
+enableCardToggle(cardContainer);
+enableCardToggle(matchResults);
+renderSkills(skills, cardContainer, 'No skills found in this category.');

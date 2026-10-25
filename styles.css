@@ -274,3 +274,25 @@ footer {
   color: #c0392b;
   font-size: 1rem;
 }
+
+/* ===== Find My Match ===== */
+.match {
+  margin-top: 3rem;
+}
+
+.match h2 {
+  margin-bottom: 1rem;
+}
+
+.calc-field select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 160px;
+  background-color: #fff;
+}
+
+.match-results {
+  margin-top: 1.5rem;
+}

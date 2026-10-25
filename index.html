@@ -13,6 +13,7 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#skills">Browse Skills</a></li>
+        <li><a href="#match">Find My Match</a></li>
         <li><a href="#calculator">Cost Calculator</a></li>
         <li><a href="#offer">Offer Skills</a></li>
         <li><a href="#about">About</a></li>
@@ -40,6 +41,29 @@
       </div>
 
       <div class="card-container" id="card-container"></div>
+    </section>
+
+    <section id="match" class="match">
+      <h2>Find My Match</h2>
+      <div class="calc-box">
+        <div class="calc-field">
+          <label for="match-category">Category</label>
+          <select id="match-category">
+            <option value="Programming">Programming</option>
+            <option value="Music">Music</option>
+            <option value="Career">Career</option>
+            <option value="Language">Language</option>
+            <option value="Sports">Sports</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="match-max-price">Max price ($ / hour)</label>
+          <input type="number" id="match-max-price" min="0" step="any" placeholder="e.g. 25">
+        </div>
+        <button id="match-btn" class="calc-btn">Find My Match</button>
+        <p id="match-message" class="calc-result" aria-live="polite"></p>
+      </div>
+      <div class="card-container match-results" id="match-results"></div>
     </section>
 
     <section id="calculator" class="calculator">

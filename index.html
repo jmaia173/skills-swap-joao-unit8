@@ -28,49 +28,17 @@
 
     <section id="skills" class="skills">
       <h2>Featured Skills</h2>
-      <div class="card-container">
 
-        <article class="skill-card">
-          <h3>Guitar Lessons</h3>
-          <p class="description">Learn chords, strumming, and your first songs.</p>
-          <p class="price">$20 / hour</p>
-          <p class="provider">Provider: Maria S.</p>
-          <div class="details">
-            <p>Beginner friendly. Sessions are 1 hour, in person or online. Bring your own guitar.</p>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <h3>Web Design Basics</h3>
-          <p class="description">Build your first website with HTML and CSS.</p>
-          <p class="price">$25 / hour</p>
-          <p class="provider">Provider: Daniel K.</p>
-          <div class="details">
-            <p>Covers layout, styling, and responsive design. Laptop required.</p>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <h3>Portuguese Conversation</h3>
-          <p class="description">Practice speaking with a native speaker.</p>
-          <p class="price">$15 / hour</p>
-          <p class="provider">Provider: Joao M.</p>
-          <div class="details">
-            <p>Casual conversation practice for all levels. Focus on everyday vocabulary and pronunciation.</p>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <h3>Soccer Training</h3>
-          <p class="description">Improve your passing, dribbling, and fitness.</p>
-          <p class="price">$30 / hour</p>
-          <p class="provider">Provider: Alex R.</p>
-          <div class="details">
-            <p>Drills for all levels, focused on technique and game awareness. Cleats recommended.</p>
-          </div>
-        </article>
-
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-category="All">All</button>
+        <button class="filter-btn" data-category="Programming">Programming</button>
+        <button class="filter-btn" data-category="Music">Music</button>
+        <button class="filter-btn" data-category="Career">Career</button>
+        <button class="filter-btn" data-category="Language">Language</button>
+        <button class="filter-btn" data-category="Sports">Sports</button>
       </div>
+
+      <div class="card-container" id="card-container"></div>
     </section>
   </main>
 
@@ -78,6 +46,7 @@
     <p>&copy; 2026 Skill Swap</p>
   </footer>
 
+  <script src="skillswap-functions.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

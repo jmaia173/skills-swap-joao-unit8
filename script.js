@@ -99,5 +99,26 @@ cardContainer.addEventListener('click', (event) => {
   }
 });
 
+// ===== Cost calculator =====
+const rateInput = document.getElementById('rate-input');
+const hoursInput = document.getElementById('hours-input');
+const calcBtn = document.getElementById('calc-btn');
+const calcResult = document.getElementById('calc-result');
+
+calcBtn.addEventListener('click', () => {
+  const rate = parseFloat(rateInput.value);
+  const hours = parseFloat(hoursInput.value);
+
+  if (Number.isNaN(rate) || Number.isNaN(hours) || rate < 0 || hours < 0) {
+    calcResult.textContent = 'Please enter a valid rate and number of hours (0 or more).';
+    calcResult.classList.add('error');
+    return;
+  }
+
+  const total = calculateTotalCost(rate, hours);
+  calcResult.classList.remove('error');
+  calcResult.textContent = total === 0 ? 'Total cost: Free' : `Total cost: $${total.toFixed(2)}`;
+});
+
 // Initial render
 renderSkills(skills);

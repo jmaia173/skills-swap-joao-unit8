@@ -13,6 +13,7 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#skills">Browse Skills</a></li>
+        <li><a href="#calculator">Cost Calculator</a></li>
         <li><a href="#offer">Offer Skills</a></li>
         <li><a href="#about">About</a></li>
       </ul>
@@ -39,6 +40,22 @@
       </div>
 
       <div class="card-container" id="card-container"></div>
+    </section>
+
+    <section id="calculator" class="calculator">
+      <h2>Session Cost Calculator</h2>
+      <div class="calc-box">
+        <div class="calc-field">
+          <label for="rate-input">Hourly rate ($)</label>
+          <input type="number" id="rate-input" min="0" step="any" placeholder="e.g. 25">
+        </div>
+        <div class="calc-field">
+          <label for="hours-input">Hours</label>
+          <input type="number" id="hours-input" min="0" step="any" placeholder="e.g. 1.5">
+        </div>
+        <button id="calc-btn" class="calc-btn">Calculate</button>
+        <p id="calc-result" class="calc-result" aria-live="polite"></p>
+      </div>
     </section>
   </main>
 

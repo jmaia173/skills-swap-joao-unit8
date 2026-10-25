@@ -78,4 +78,9 @@ describe('matchSkillsToUser', () => {
   });
 
   test('includes free skills', () => {
-    const userNeeds = { category: 'Career',
+    const userNeeds = { category: 'Career', maxPrice: 0 };
+    expect(matchSkillsToUser(userNeeds, skills)).toEqual([
+      { title: 'Resume Review', category: 'Career', price: 0 }
+    ]);
+  });
+});
